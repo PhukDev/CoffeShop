@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CoffeShop.Models.Product>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,11 +6,17 @@
 </head>
 <body>
     <h1>Shop Coffee</h1>
-    @foreach (var item in Model)
-    {
-        <img width="100" src="@item.ImageUrl" />
-        <h3>@item.Name</h3>
-        <p>@item.Price.ToString("C")</p>
-    }
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="single-product">
+                <img width="100" src="@item.ImageUrl" />
+                <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" target="_blank">
+                    <h3>@item.Name</h3>
+                </a>
+                <p>@item.Price.ToString("C")</p>
+            </div>
+        }
+    </div>
 </body>
 </html>
