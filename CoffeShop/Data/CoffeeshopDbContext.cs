@@ -4,14 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CoffeShop.Data
 { 
-        public class CoffeeshopDbContext : DbContext
-        {
+       public class CoffeeshopDbContext : DbContext
+       {
             public CoffeeshopDbContext(DbContextOptions<CoffeeshopDbContext> options) :
             base(options)
             {
             }
             public DbSet<Product> Products { get; set; }
             public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+            public DbSet<Order> Orders { get; set; }
+            public DbSet<OrderDetail> OrderDetails { get; set; }
         //seed data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
